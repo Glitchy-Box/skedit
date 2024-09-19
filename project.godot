@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Skedit"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/bg_color=Color(0.229271, 0.000164006, 0.291716, 1)
 config/icon="res://icon.svg"

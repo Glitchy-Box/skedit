@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d301i23e64d66"]
+
+[ext_resource type="Texture2D" uid="uid://lk4lklumd02y" path="res://basic.svg" id="1_nohg7"]
+[ext_resource type="Script" path="res://button.gd" id="2_pjn5f"]
+
+[sub_resource type="Theme" id="Theme_xqh68"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Basic" type="Sprite2D" parent="."]
+position = Vector2(600.75, 358)
+scale = Vector2(2.12632, 1.56085)
+texture = ExtResource("1_nohg7")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 346.0
+offset_top = 238.0
+offset_right = 828.0
+offset_bottom = 317.0
+theme = SubResource("Theme_xqh68")
+text = "Start Editor"
+script = ExtResource("2_pjn5f")
+
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
