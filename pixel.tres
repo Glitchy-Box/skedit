@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://crhd4gd5uf7la"]
+
+[ext_resource type="FontFile" uid="uid://fle71kylcm8b" path="res://PixelifySans-VariableFont_wght.ttf" id="1_hnkkw"]
+[ext_resource type="StyleBox" uid="uid://binm0bsg361bd" path="res://pixel_flat.tres" id="1_n5aun"]
+[ext_resource type="StyleBox" uid="uid://bcex37msbi5mr" path="res://pixel_hover.tres" id="1_tkq3d"]
+[ext_resource type="StyleBox" uid="uid://c7q2me7tg75fa" path="res://pixel_down.tres" id="3_iiyus"]
+
+[resource]
+default_font = ExtResource("1_hnkkw")
+Button/colors/font_color = Color(0.998828, 0.821991, 0.8626, 1)
+Button/styles/hover = ExtResource("1_tkq3d")
+Button/styles/normal = ExtResource("1_n5aun")
+Button/styles/pressed = ExtResource("3_iiyus")
+TextEdit/styles/focus = ExtResource("1_tkq3d")
+TextEdit/styles/normal = ExtResource("1_n5aun")
+TextEdit/styles/read_only = ExtResource("3_iiyus")

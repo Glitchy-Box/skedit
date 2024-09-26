@@ -2,7 +2,8 @@ extends TextureRect
 
 
 
-var about = "SKEdit, Official Project Shopkeeper Level Maker. Version 0.1 Alpha"
+var about = "Made with SKEdit v0.1b. Exported in Concept Mode!"
+var mode = "C"
 var version = "0.1"
 
 
@@ -56,11 +57,42 @@ func clickpoints(viewport, event, shape_idx):
 func save():
 	var savedata = {
 		"title": "MapEditor",
-		"desc": "Level Made in Skedit Ver. " + version,
+		"desc": about,
 		"points": bloblos,
-		"Background": get_node("../Label/TextEdit").text
+		"Background": get_node("../Label/TextEdit").text,
+		"spawn": spwn,
+		"mode": mode
 	};
 	print(savedata)
 	var mfile = FileAccess.open(get_node("../Label2/TextEdit").text, FileAccess.WRITE)
 	var datstr = JSON.stringify(savedata);
 	mfile.store_line(datstr)
+
+
+func load():
+	var mfile = FileAccess.open(get_node("../Label2/TextEdit").text, FileAccess.READ);
+	if (mfile != null):
+		var datstr = JSON.parse_string(mfile.get_as_text());
+		get_node("../Label/TextEdit").text = datstr["Background"];
+		var img = Image.new();
+		img.load(get_node("../Label/TextEdit").text);
+		var imt = ImageTexture.new();
+		imt.set_image(img);
+		get_node("../TextureRect").texture = imt;
+		
+		#Place Points
+		bloblos = [];
+		tracking = [];
+		for point in datstr["points"]:
+			var bloblo = get_node("bloblo").duplicate();
+			"".split(",")
+			bloblo.position = Vector2(int(point.split(",")[0]), int(point.split(",")[1]));
+			bloblos.append(bloblo.position);
+			
+			bloblo.get_node("Label").text = str(len(bloblos));
+			tracking.append(bloblo);
+			get_node("..").add_child(tracking[len(tracking)-1]);
+		spwn = Vector2(int(datstr["spawn"].split(",")[0]), int(datstr["spawn"].split(",")[1]));
+		get_node("../bloblo2").position = spwn;
+	
+	
